@@ -1,0 +1,63 @@
+{
+  "useTemplate": false,
+  "name": "amg-bank",
+  "developer": {
+    "archwayd": {
+      "docker": false
+    },
+    "deployments": [
+      {
+        "project": "amg-bank",
+        "type": "instantiate",
+        "chainId": "constantine-2",
+        "codeId": 383,
+        "txhash": "D63F5C81F7AEDE0923A838E27496F8F3B80A2BFE95971372DF817607C60DEEA3",
+        "address": "archway1eu8wgn8rl7mxzvk64yny4gcv9qd450qdjj0t8ku3scfc77drraxq8f54ry",
+        "admin": "archway1wdydvakqzs4f5czdfxusxxdkjj99yykw0e0lf3"
+      },
+      {
+        "project": "amg-bank",
+        "type": "store",
+        "chainId": "constantine-2",
+        "codeId": 383,
+        "txhash": "DD85FDFD8F776A68C47ABE9DA5266216D7C6D4242D5DE9EC7F2432EF580CD968"
+      }
+    ],
+    "scripts": {
+      "test": "cargo unit-test",
+      "build": "cargo build",
+      "optimize": "cargo run-script optimize",
+      "wasm": "cargo wasm",
+      "query": "archwayd query wasm",
+      "tx": "archwayd tx wasm execute"
+    }
+  },
+  "network": {
+    "name": "constantine",
+    "chainId": "constantine-2",
+    "type": "testnet",
+    "fees": {
+      "feeDenom": "uconst"
+    },
+    "gas": {
+      "prices": "0.002uconst",
+      "mode": "auto",
+      "adjustment": "1.5"
+    },
+    "wasm": {
+      "bech32Hrp": "archway",
+      "archwayd": "0.1.0",
+      "configDir": ".archway",
+      "binary": "archwayd"
+    },
+    "urls": {
+      "rpc": {
+        "url": "https://rpc.constantine-2.archway.tech",
+        "port": 443
+      },
+      "faucets": [
+        "https://faucet.constantine-2.archway.tech"
+      ]
+    }
+  }
+}
