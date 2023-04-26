@@ -14,7 +14,6 @@ pub enum ExecuteMsg {
     Deposit {},
     Withdraw {},
     BorrowBalance { amount: Uint128 },
-    ProvideFee {},
     PayBack {},
 }
 

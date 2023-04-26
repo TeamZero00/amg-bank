@@ -30,9 +30,7 @@ pub fn instantiate(
     let pool = Pool {
         denom: "uconst".to_string(),
         balance: Uint128::new(0),
-        fee_pool: Uint128::new(0),
         lp_contract,
-        borrow_balance: Uint128::new(0),
         game_contract,
     };
 
@@ -54,25 +52,9 @@ pub fn execute(
     match msg {
         ExecuteMsg::Deposit {} => deposit(deps, info),
         ExecuteMsg::Withdraw {} => withdraw(deps, env, info),
-        ExecuteMsg::ProvideFee {} => provide_fee(deps, info),
         ExecuteMsg::BorrowBalance { amount } => borrow_balance(deps, info, amount),
         ExecuteMsg::PayBack {} => payback(deps, info),
     }
-}
-
-fn provide_fee(deps: DepsMut, info: MessageInfo) -> Result<Response, ContractError> {
-    let mut pool = load_pool(deps.storage)?;
-
-    //check betting contract
-    check_game_contract(&info, &pool)?;
-
-    //checking send fee token
-    check_denom(&info, &pool)?;
-    //fee pool += fee_amount
-
-    pool.fee_pool += info.funds[0].amount;
-    save_pool(deps.storage, &pool)?;
-    Ok(Response::new())
 }
 
 fn payback(deps: DepsMut, info: MessageInfo) -> Result<Response, ContractError> {
@@ -83,18 +65,14 @@ fn payback(deps: DepsMut, info: MessageInfo) -> Result<Response, ContractError> 
 
     //checking send fee token
     check_denom(&info, &pool)?;
-    //payback amount is borrowed amount * 2
+
     let denom_amount = info.funds[0].amount;
 
     //balance + denom_amount
     pool.balance += denom_amount;
 
-    //borrow_balance - denom_amount / 2
-    pool.borrow_balance -= denom_amount
-        .checked_div(Uint128::new(2))
-        .unwrap_or_default();
     save_pool(deps.storage, &pool)?;
-    Ok(Response::new())
+    Ok(Response::default())
 }
 
 fn borrow_balance(
@@ -110,6 +88,7 @@ fn borrow_balance(
     check_enough_pool(&pool, amount)?;
 
     pool.balance -= amount;
+
     save_pool(deps.storage, &pool)?;
 
     let bank_msg = CosmosMsg::Bank(BankMsg::Send {
@@ -194,30 +173,31 @@ fn withdraw(deps: DepsMut, env: Env, info: MessageInfo) -> Result<Response, Cont
         return Err(ContractError::InvalidExpires {});
     }
 
-    let withdraw_balance = match total_supply.u128() {
+    let withdraw_balance: Uint128 = match total_supply.u128() {
         0 => {
             let ratio = Decimal::new(Uint128::new(1));
-            (pool.balance * ratio).u128()
+            (pool.balance * ratio).into()
         }
         _ => {
             let ratio = Decimal::from_ratio(request_widthdraw_amount, total_supply);
-            (pool.balance * ratio).u128()
+            (pool.balance * ratio).into()
         }
     };
 
     pool.balance = pool
         .balance
-        .checked_sub(Uint128::new(withdraw_balance))
+        .checked_sub(withdraw_balance)
         .unwrap_or_default();
 
     POOL.save(deps.storage, &pool)?;
 
-    let withdraw_coin = coin(withdraw_balance, pool.denom.as_str());
+    let withdraw_coin = coin(withdraw_balance.u128(), pool.denom.as_str());
 
     let bank_msg = CosmosMsg::Bank(BankMsg::Send {
         to_address: info.sender.to_string(),
         amount: vec![withdraw_coin],
     });
+
     let burn_msg = CosmosMsg::Wasm(WasmMsg::Execute {
         contract_addr: lp_contract_address.to_string(),
         msg: to_binary(&Cw20ExecuteMsg::BurnFrom {

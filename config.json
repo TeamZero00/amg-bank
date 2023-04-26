@@ -8,6 +8,123 @@
     "deployments": [
       {
         "project": "amg-bank",
+        "type": "store",
+        "chainId": "constantine-2",
+        "codeId": 567,
+        "txhash": "9F9EC67942C7500727AC1A2E4E6594A8536CC06560D0C7B89762DC1A50D35164"
+      },
+      {
+        "project": "amg-bank",
+        "type": "store",
+        "chainId": "constantine-2",
+        "codeId": 502,
+        "txhash": "A1AEEE9E5ED83105E28FC81002D4FDA79368A57CBBDDC77660AAF693AF3DB2F2"
+      },
+      {
+        "project": "amg-bank",
+        "type": "store",
+        "chainId": "constantine-2",
+        "codeId": 492,
+        "txhash": "99DADECB21C0364F0DAD7576639234F2585AC64A1C21D9C36220332377A693A4"
+      },
+      {
+        "project": "amg-bank",
+        "type": "store",
+        "chainId": "constantine-2",
+        "codeId": 491,
+        "txhash": "1872281F7A39A6EE7CA764F0C0C8068D87CE0AE99BBEFD3458F3DF1301879006"
+      },
+      {
+        "project": "amg-bank",
+        "type": "store",
+        "chainId": "constantine-2",
+        "codeId": 454,
+        "txhash": "59D919997875392F6ED25DF1E0D24C74CAAB41815D57C5D5C87FD81104A10BD2"
+      },
+      {
+        "project": "amg-bank",
+        "type": "store",
+        "chainId": "constantine-2",
+        "codeId": 452,
+        "txhash": "27D9487A461FF81CCF2AD32789FC6162A745251749007F4952389A74B95B4381"
+      },
+      {
+        "project": "amg-bank",
+        "type": "store",
+        "chainId": "constantine-2",
+        "codeId": 420,
+        "txhash": "6ABCF952C80779D17F6C409529A81C5100EE286A844CD94801D08A3BADA9D484"
+      },
+      {
+        "project": "amg-bank",
+        "type": "store",
+        "chainId": "constantine-2",
+        "codeId": 405,
+        "txhash": "689EB68E2110004C3BF69B184D29E99D27DD9BEC02DE8CDFC509DABF347E18A2"
+      },
+      {
+        "project": "amg-bank",
+        "type": "instantiate",
+        "chainId": "constantine-2",
+        "codeId": 393,
+        "txhash": "2CCFA9E8B5184242C0B5DECADBD9B70C1AA31DAEBCF9437BA7D462AF783F76AC",
+        "address": "archway15kxe8qf5vu6fx420mw832t045jx58skyd2cdjws63e4je7v7g9lqpu0jk6",
+        "admin": "archway17ppdxcezcu8rgzfvumralsk9x9hxj59x50wu5j"
+      },
+      {
+        "project": "amg-bank",
+        "type": "instantiate",
+        "chainId": "constantine-2",
+        "codeId": 393,
+        "txhash": "0FA671E6AC9AC0F43760CC40DD2C4EC11122D8B5A073F7EAF6EF4DE56B0FCAD3",
+        "address": "archway1mpzkp2fv2y8fjqgyxexg6p38ytffuwas0gl2a4qkplhn03n24fessr9cv9",
+        "admin": "archway17ppdxcezcu8rgzfvumralsk9x9hxj59x50wu5j"
+      },
+      {
+        "project": "amg-bank",
+        "type": "instantiate",
+        "chainId": "constantine-2",
+        "codeId": 393,
+        "txhash": "B126898486B3BD5D3E5FBF86CAFAAAD6CF1DA15E78BC4FF3E96933154AA74229",
+        "address": "archway16k4h2yvpw93ynealts7vd2vx9sx7ulyswztfdd6nkpq0t2wu9q0s59rvjl",
+        "admin": "archway17ppdxcezcu8rgzfvumralsk9x9hxj59x50wu5j"
+      },
+      {
+        "project": "amg-bank",
+        "type": "store",
+        "chainId": "constantine-2",
+        "codeId": 393,
+        "txhash": "9F6D0254484E397C3B295B805D155B20ACD1F97C80D956507584523FAFA4319A"
+      },
+      {
+        "project": "amg-bank",
+        "type": "instantiate",
+        "chainId": "constantine-2",
+        "codeId": 383,
+        "txhash": "187E1F43ED04B6BD5B122765C66B3A6621876AF409F44C30814B3A553E65D32A",
+        "address": "archway1s4scgy0qhlfzflkzj8enunarfhevpjzgzqsa48ly7f02jzn46m9s8rmkvy",
+        "admin": "archway1382j5acdluf577666xr74e9h66ksyhddyjm9am"
+      },
+      {
+        "project": "amg-bank",
+        "type": "instantiate",
+        "chainId": "constantine-2",
+        "codeId": 383,
+        "txhash": "3D22295397A0707A2CF40C77989EB5D93397581469303DDEA3EA23DA114F461C",
+        "address": "archway1d368spdpu833k6umghfd4lk3n9p7vfa803ahw47ue7usnrv2exmq3pv56p",
+        "admin": "archway1382j5acdluf577666xr74e9h66ksyhddyjm9am"
+      },
+      {
+        "project": "amg-bank",
+        "type": "instantiate",
+        "chainId": "constantine-2",
+        "codeId": 383,
+        "txhash": "AA1830C43A410BF83B2AA5B69925B138C4EEFCB299D62FE7D4C818218B63F851",
+        "address": "archway1wft2p2kxknpd5ctl3djjp46fxkwsx932mkwytxhepyvcw4s3xslsmqqhzj",
+        "admin": "archway1wdydvakqzs4f5czdfxusxxdkjj99yykw0e0lf3"
+      },
+      {
+        "project": "amg-bank",
         "type": "instantiate",
         "chainId": "constantine-2",
         "codeId": 383,
